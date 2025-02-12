@@ -1,0 +1,25 @@
+package com.tit.week04.day02.collections.setinterface.symmetricdifference;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class SymmetricDifference {
+    public static <T> Set<T> getSymmetricDifference(Set<T> set1, Set<T> set2) {
+        Set<T> symmetricDifference = new HashSet<>(set1);
+        symmetricDifference.addAll(set2); // Add all elements from both sets
+
+        Set<T> intersection = new HashSet<>(set1);
+        intersection.retainAll(set2); // Find common elements
+
+        symmetricDifference.removeAll(intersection); // Remove common elements
+        return symmetricDifference;
+    }
+
+    public static void main(String[] args) {
+        Set<Integer> set1 = Set.of(1, 2, 3);
+        Set<Integer> set2 = Set.of(3, 4, 5);
+
+        System.out.println("Symmetric Difference: " + getSymmetricDifference(set1, set2)); // Output: {1, 2, 4, 5}
+    }
+}
+
